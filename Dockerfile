@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build binary statik
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main ./cmd/api/main.go
 # Stage 2: Production
 FROM alpine:3.18
 
