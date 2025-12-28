@@ -1,0 +1,19 @@
+# Environment & Config
+.env
+config.json
+
+# Binaries
+main
+main.exe
+*.exe
+*.dll
+*.so
+*.dylib
+test
+debug
+
+# IDE & OS
+.vscode/
+.idea/      
+.DS_Store
+Thumbs.db
