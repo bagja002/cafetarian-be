@@ -172,6 +172,7 @@ func (s *orderService) HandleNotification(payload map[string]interface{}) error 
 	if newStatus != "" {
 		fmt.Printf("Updating order %s status to %s\n", orderID, newStatus)
 		return s.repo.UpdateFromNotification(orderID, newStatus)
+
 	}
 
 	return nil
