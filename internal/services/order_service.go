@@ -102,6 +102,7 @@ func (s *orderService) CreateOrder(req *CreateOrderRequest) (string, string, str
 		PaymentMethod: req.Customer.PaymentMethod,
 		OrderItems:    orderItems,
 		Transaction:   transaction,
+		Email:         req.Customer.Email,
 		CreatedAt:     createdAt,
 	}
 
