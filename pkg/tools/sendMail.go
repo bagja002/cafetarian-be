@@ -8,16 +8,6 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-var cfg *config.Config
-
-func init() {
-	var err error
-	cfg, err = config.LoadConfig()
-	if err != nil {
-		log.Fatalf("Error loading config: %v", err)
-	}
-}
-
 const (
 	SMTPHost   = "smtp.gmail.com"
 	SMTPPort   = 587
@@ -27,6 +17,11 @@ const (
 
 // SendOrderSuccessEmail mengirim email notifikasi pesanan berhasil
 func SendOrderSuccessEmail(toEmail, userName, orderID, message string) error {
+
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatalf("Error loading config: %v", err)
+	}
 
 	subject := fmt.Sprintf("Pesanan #%s Anda Sedang Diproses", orderID)
 	body := fmt.Sprintf(`
