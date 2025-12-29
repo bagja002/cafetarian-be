@@ -133,6 +133,7 @@ func (s *orderService) CreateOrder(req *CreateOrderRequest) (string, string, str
 		}
 		//Send Email
 		tools.SendOrderSuccessEmail(order.Email, order.CustomerName, order.ID, "Terima kasih telah memesan di Cafe Santai, pesanan Anda sedang di proses")
+		fmt.Println("Email sent successfully")
 		return order.ID, snapResp.RedirectURL, snapResp.Token, nil
 	}
 
