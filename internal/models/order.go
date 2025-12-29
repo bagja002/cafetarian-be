@@ -10,6 +10,7 @@ import (
 type Order struct {
 	ID            string         `gorm:"type:char(36);primaryKey" json:"id"`
 	CustomerName  string         `gorm:"type:varchar(100);not null" json:"customer_name"`
+	Email         string         `gorm:"type:varchar(100);not null" json:"email"`
 	TableNumber   string         `gorm:"type:varchar(10);not null" json:"table_number"`
 	PaymentMethod string         `gorm:"type:varchar(50)" json:"payment_method"`
 	OrderItems    []OrderItem    `gorm:"foreignKey:OrderID" json:"items"`

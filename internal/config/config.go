@@ -25,8 +25,9 @@ type AppConfig struct {
 }
 
 type WebConfig struct {
-	Port    string `mapstructure:"port"`
-	Prefork bool   `mapstructure:"prefork"`
+	Port        string `mapstructure:"port"`
+	Prefork     bool   `mapstructure:"prefork"`
+	AppPassword string `mapstructure:"app_password"`
 }
 
 type DatabaseConfig struct {

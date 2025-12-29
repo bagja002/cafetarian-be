@@ -5,6 +5,7 @@ import (
 	"project-kelas-santai/internal/config"
 	"project-kelas-santai/internal/models"
 	"project-kelas-santai/internal/repository"
+	"project-kelas-santai/pkg/tools"
 	"time"
 
 	"github.com/midtrans/midtrans-go"
@@ -23,6 +24,7 @@ type CustomerDTO struct {
 	Name          string `json:"name"`
 	TableNumber   string `json:"table_number"`
 	PaymentMethod string `json:"payment_method"`
+	Email         string `json:"email"`
 }
 
 type ItemDTO struct {
@@ -128,6 +130,8 @@ func (s *orderService) CreateOrder(req *CreateOrderRequest) (string, string, str
 		if snapErr != nil {
 			return "", "", "", snapErr
 		}
+		//Send Email
+		tools.SendOrderSuccessEmail(order.Email, order.CustomerName, order.ID, "Terima kasih telah memesan di Cafe Santai, pesanan Anda sedang di proses")
 		return order.ID, snapResp.RedirectURL, snapResp.Token, nil
 	}
 
