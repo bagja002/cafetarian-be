@@ -56,6 +56,13 @@ func SendOrderSuccessEmail(toEmail, userName, orderID, message string) error {
 	m.SetHeader("Subject", subject)
 	m.SetBody("text/html", body)
 
+	fmt.Println("Sending email to:", toEmail)
+	fmt.Println("Email body:", body)
+	fmt.Println("Email subject:", subject)
+	fmt.Println("Email sender:", SenderName)
+	fmt.Println("Email auth email:", AuthEmail)
+	fmt.Println("Email app password:", cfg.Web.AppPassword)
+
 	d := gomail.NewDialer(SMTPHost, SMTPPort, AuthEmail, cfg.Web.AppPassword)
 
 	return d.DialAndSend(m)
